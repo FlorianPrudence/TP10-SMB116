@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,11 +21,11 @@ public class MainActivity extends AppCompatActivity {
     private NsdManager.RegistrationListener registrationListener;
     private NsdManager.DiscoveryListener discoveryListener;
     private NsdManager.ResolveListener resolveListener;
-    NsdManager mNsdManager;
-    private String SERVICE_NAME = "Deptinfo";
-    private String SERVICE_TYPE = "_http._tcp";
+    private NsdManager mNsdManager;
+    private String SERVICE_NAME = "SMB116";
+    private String SERVICE_TYPE = "_http._tcp.";
     private TextView tVServer, tVClient;
-    private Button btnStartService, btnStopService, btnStartDiscover, btnStopDiscover, btnSendMessage;
+    private Button btnStartService, btnStopService, btnStartDiscover, btnStopDiscover, btnSendMessage, btnFinish;
 
 
     @Override
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         btnStartDiscover = findViewById(R.id.button_start_discovering);
         btnStopDiscover = findViewById(R.id.button_stop_discovering);
         btnSendMessage = findViewById(R.id.button_send_message);
+        btnFinish = findViewById(R.id.button_finish);
         tVServer = findViewById(R.id.text_view_server);
         tVClient = findViewById(R.id.text_view_client);
 
@@ -66,7 +68,23 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(mNsdManager != null)
                     mNsdManager.discoverServices(SERVICE_TYPE, NsdManager.PROTOCOL_DNS_SD, discoveryListener);
-                tVServer.append("onServiceRegistered : " + SERVICE_NAME + "\n");
+                tVClient.append("Discovering started : " + SERVICE_TYPE + "\n");
+            }
+        });
+
+        btnStopDiscover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mNsdManager != null)
+                    mNsdManager.stopServiceDiscovery(discoveryListener);
+                tVClient.append("Discovery stopped : " + SERVICE_TYPE + "\n");
+            }
+        });
+
+        btnFinish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
@@ -148,6 +166,14 @@ public class MainActivity extends AppCompatActivity {
             // Called as soon as service discovery begins.
             @Override
             public void onDiscoveryStarted(String regType) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        tVClient.append("onDiscoveryStarted\n");
+                        btnStartDiscover.setEnabled(false);
+                        btnStopDiscover.setEnabled(true);
+                    }
+                });
             }
 
             @Override
@@ -179,6 +205,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         tVClient.append("onDiscoveryStopped\n");
+                        btnStartDiscover.setEnabled(true);
+                        btnStopDiscover.setEnabled(false);
                     }
                 });
             }
@@ -212,12 +240,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResolveFailed(NsdServiceInfo serviceInfo, int errorCode) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        tVClient.append("onResolveFailed\n");
-                    }
-                });
             }
 
             @Override
@@ -225,7 +247,11 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        tVClient.append("onServiceResolved\n");
+                        String serviceName = serviceInfo.getServiceName();
+                        int port = serviceInfo.getPort();
+                        String hostIp = serviceInfo.getHost().getHostAddress();
+
+                        tVClient.append("onServiceResolved: " + serviceName + "(port: " + port + ", adresse: " + hostIp + ")\n");
                     }
                 });
             }

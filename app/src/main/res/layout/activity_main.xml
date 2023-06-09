@@ -1,74 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_start_service"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Start Service" >
-    </Button>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_start_service"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:text="Start Service" >
+        </Button>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_stop_service"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Stop Service"
-        android:enabled="false">
-    </Button>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_stop_service"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:text="Stop Service"
+            android:enabled="false">
+        </Button>
 
-    <TextView
-        android:id="@+id/text_view_server"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Infos Service: \n"
-        android:textSize="20sp"
-        android:layout_marginTop="8dp"
-        android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/text_view_server"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Infos Service: \n"
+            android:textSize="20sp"
+            android:layout_marginTop="8dp"
+            android:textStyle="bold"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_start_discovering"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Start Discovering">
-    </Button>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_start_discovering"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:text="Start Discovering">
+        </Button>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_stop_discovering"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Stop Discovering"
-        android:enabled="false">
-    </Button>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_stop_discovering"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:text="Stop Discovering"
+            android:enabled="false">
+        </Button>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_send_message"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Send message"
-        android:enabled="false">
-    </Button>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_send_message"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:text="Send message"
+            android:enabled="false">
+        </Button>
 
-    <TextView
-        android:id="@+id/text_view_client"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Infos Client: \n"
-        android:textSize="20sp"
-        android:layout_marginTop="8dp"
-        android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/text_view_client"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Infos Client: \n"
+            android:textSize="20sp"
+            android:layout_marginTop="8dp"
+            android:textStyle="bold"/>
 
-
-</LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_finish"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:text="Finish">
+        </Button>
+    </LinearLayout>
+</ScrollView>
