@@ -7,7 +7,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -16,7 +15,6 @@
             android:layout_marginRight="8dp"
             android:text="Start Service" >
         </Button>
-
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,7 +24,6 @@
             android:text="Stop Service"
             android:enabled="false">
         </Button>
-
         <TextView
             android:id="@+id/text_view_server"
             android:layout_width="match_parent"
@@ -35,7 +32,6 @@
             android:textSize="20sp"
             android:layout_marginTop="8dp"
             android:textStyle="bold"/>
-
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,7 +40,6 @@
             android:layout_marginRight="8dp"
             android:text="Start Discovering">
         </Button>
-
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,7 +49,6 @@
             android:text="Stop Discovering"
             android:enabled="false">
         </Button>
-
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -64,7 +58,6 @@
             android:text="Send message"
             android:enabled="false">
         </Button>
-
         <TextView
             android:id="@+id/text_view_client"
             android:layout_width="match_parent"
@@ -73,7 +66,6 @@
             android:textSize="20sp"
             android:layout_marginTop="8dp"
             android:textStyle="bold"/>
-
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
